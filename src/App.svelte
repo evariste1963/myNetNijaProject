@@ -10,6 +10,7 @@
 </script>
 
 <main>
+	<!-- link to project lessons :- https://www.youtube.com/watch?v=QJJjXRIg7kI&list=PL4cUxeGkcC9hlbrVO_2QFVqVPhlZmz7tO&index=5 -->
 	<h1>Hello {name}!</h1>
 	<!-- dynamic inline style -->
 	<p style='color:{beltColour}'>{beltColour} belt</p>

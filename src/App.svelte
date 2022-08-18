@@ -4,6 +4,8 @@
   const handleClick = () => {
     beltColour = "orange";
   };
+
+  // 1A. 2 way binding --- if using on:click method tp call this handleInput function
   const handleInput = e => {
     beltColour = e.target.value;
   };
@@ -16,8 +18,8 @@
   <!-- dynamic inline style -->
   <p style="color:{beltColour}">{beltColour} belt</p>
   <button on:click={handleClick}>update belt colour</button>
-  <!-- 2 way binding --- 2 ways -->
-  <!-- <input on:input={handleInput} type="text" value = {beltColour}> -->
+  <!-- 1B. 2 way binding --- 2 ways -->
+  <!-- <input type="text" on:input={handleInput} value = {beltColour}> -->
   <!-- short method of 2 way binding-->
   <input type="text" bind:value={beltColour} />
 </main>

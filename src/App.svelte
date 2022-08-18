@@ -6,9 +6,9 @@
   };
 
   // 1A. 2 way binding --- if using on:click method tp call this handleInput function
-  const handleInput = e => {
-    beltColour = e.target.value;
-  };
+  //const handleInput = e => {
+  //  beltColour = e.target.value;
+  // };
 </script>
 
 <main>

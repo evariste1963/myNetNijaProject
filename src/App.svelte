@@ -36,10 +36,11 @@
     console.log(people)
     people = [
       ...people,
-      { name: firstName, beltColour, age: age, id: 10 },
+      { name: firstName, beltColour, age: age, id: people[people.length -1].id +1 },
     ];
-    console.log(people);
+    console.log(people)
   };
+ 
 </script>
 
 <main>

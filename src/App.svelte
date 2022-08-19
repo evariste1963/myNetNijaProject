@@ -1,9 +1,9 @@
 <script>
-  let firstName, middleName, lastName, age, beltColour;
+    let firstName, middleName, lastName, age, beltColour;
 
   // reactive values % statements
  
-  $: fullName = `${firstName}${middleName}${lastName}`;
+  $: fullName = `${firstName} ${middleName} ${lastName}`;
   //$: console.log(beltColour);
   $: {
     //console.log(beltColour);
@@ -30,7 +30,7 @@
   };
 
   const handleAddPerson = () => {
-    if (firstName.length){
+    if (firstName && age && beltColour){
    
     people = [
       ...people,
@@ -38,7 +38,7 @@
     ];
   }
   };
-
+  
   const handleClearInputs = () => {
     firstName = null;
     middleName = null;
@@ -52,10 +52,10 @@
 <main>
   <!-- link to project lessons :- https://www.youtube.com/watch?v=QJJjXRIg7kI&list=PL4cUxeGkcC9hlbrVO_2QFVqVPhlZmz7tO&index=5 -->
 
-  <h1 style="color:{beltColour}">Hello {#if  firstName && middleName && lastName}{fullName}!{:else} what's your name?{/if}</h1>
+  <h1 style="color:{beltColour}">Hello {#if !middleName && firstName && lastName}{firstName} {lastName}!{:else if firstName && middleName && lastName} {fullName}! {:else} what's your name?{/if}</h1>
   <!-- dynamic inline style -->
   <!-- <p style="color:{beltColour}">{beltColour} belt</p> -->
-  {#if beltColour}
+  {#if beltColour && firstName && lastName}
   <p style="color:{beltColour}">{fullName} - {beltColour} belt</p>
   {/if}
   
@@ -74,6 +74,9 @@
   {#each people as person (person.id)}
     <div>
       <h4 on:click={() => handleDelete(person.id)}>{person.name}</h4>
+      {#if person.beltColour === 'black'}
+      <p style='color: red'><strong> MASTER NINJA!</strong></p>
+      {/if}
       <p>{person.age} years old, {person.beltColour} belt</p>
       ----------------------------
     </div>

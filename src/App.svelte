@@ -1,11 +1,8 @@
 <script>
-  let firstName = "this";
-  let middleName = ".";
-  let lastName = "me";
-  let age;
-  let beltColour = "black";
+  let firstName, middleName, lastName, age, beltColour;
 
   // reactive values % statements
+ 
   $: fullName = `${firstName}${middleName}${lastName}`;
   //$: console.log(beltColour);
   $: {
@@ -33,33 +30,46 @@
   };
 
   const handleAddPerson = () => {
-    console.log(people)
+    if (firstName.length){
+   
     people = [
       ...people,
       { name: firstName, beltColour, age: age, id: people[people.length -1].id +1 },
     ];
-    console.log(people)
+  }
   };
+
+  const handleClearInputs = () => {
+    firstName = null;
+    middleName = null;
+    lastName=null;
+    age=null;
+    beltColour=null
+  }
  
 </script>
 
 <main>
   <!-- link to project lessons :- https://www.youtube.com/watch?v=QJJjXRIg7kI&list=PL4cUxeGkcC9hlbrVO_2QFVqVPhlZmz7tO&index=5 -->
 
-  <h1 style="color:{beltColour}">Hello {fullName}!</h1>
+  <h1 style="color:{beltColour}">Hello {#if  firstName && middleName && lastName}{fullName}!{:else} what's your name?{/if}</h1>
   <!-- dynamic inline style -->
   <!-- <p style="color:{beltColour}">{beltColour} belt</p> -->
+  {#if beltColour}
   <p style="color:{beltColour}">{fullName} - {beltColour} belt</p>
+  {/if}
+  
   <!-- <button on:click={handleClick}>update belt colour</button> -->
-  <input type="text" bind:value={firstName} />
-  <input type="text" bind:value={middleName} />
-  <input type="text" bind:value={lastName} />
-  <input type="text" bind:value={age}>
+  <input type="text" placeholder='enter first name' bind:value={firstName} />
+  <input type="text" placeholder='enter middle name' bind:value={middleName} />
+  <input type="text" placeholder='enter last name' bind:value={lastName} />
+  <input type="text" placeholder='enter age' bind:value={age}>
   <!-- 1B. 2 way binding --- 2 ways -->
   <!-- <input type="text" on:input={handleInput} value = {beltColour}> -->
   <!-- short method of 2 way binding-->
-  <input type="text" bind:value={beltColour} />
+  <input type="text" placeholder='enter belt colour' bind:value={beltColour} />
   <button on:click={handleAddPerson}>add person</button>
+  <button on:click={handleClearInputs}>clear input</button>
 
   {#each people as person (person.id)}
     <div>

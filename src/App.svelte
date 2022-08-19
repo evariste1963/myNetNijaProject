@@ -2,6 +2,7 @@
   let firstName = "this";
   let middleName = ".";
   let lastName = "me";
+  let age;
   let beltColour = "black";
 
   // reactive values % statements
@@ -34,7 +35,7 @@
   const handleAddPerson = () => {
     people = [
       ...people,
-      { name: firstName, beltColour, age: 10, id: people.length + 1 },
+      { name: firstName, beltColour, age: age, id: people.length + 1 },
     ];
     console.log(people);
   };
@@ -51,6 +52,7 @@
   <input type="text" bind:value={firstName} />
   <input type="text" bind:value={middleName} />
   <input type="text" bind:value={lastName} />
+  <input type="text" bind:value={age}>
   <!-- 1B. 2 way binding --- 2 ways -->
   <!-- <input type="text" on:input={handleInput} value = {beltColour}> -->
   <!-- short method of 2 way binding-->

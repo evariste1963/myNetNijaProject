@@ -7,10 +7,10 @@
 
   // reactive values % statements
   $: fullName = `${firstName}${middleName}${lastName}`;
-  $: console.log(beltColour);
+  //$: console.log(beltColour);
   $: {
-    console.log(beltColour);
-    console.log(fullName);
+    //console.log(beltColour);
+    //console.log(people);
   }
 
   const handleClick = () => {
@@ -33,9 +33,10 @@
   };
 
   const handleAddPerson = () => {
+    console.log(people)
     people = [
       ...people,
-      { name: firstName, beltColour, age: age, id: people.length + 1 },
+      { name: firstName, beltColour, age: age, id: 10 },
     ];
     console.log(people);
   };

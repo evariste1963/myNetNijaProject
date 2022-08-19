@@ -30,6 +30,14 @@
   const handleDelete = id => {
     people = people.filter(person => person.id != id);
   };
+
+  const handleAddPerson = () => {
+    people = [
+      ...people,
+      { name: firstName, beltColour, age: 10, id: people.length + 1 },
+    ];
+    console.log(people);
+  };
 </script>
 
 <main>
@@ -47,6 +55,7 @@
   <!-- <input type="text" on:input={handleInput} value = {beltColour}> -->
   <!-- short method of 2 way binding-->
   <input type="text" bind:value={beltColour} />
+  <button on:click={handleAddPerson}>add person</button>
 
   {#each people as person (person.id)}
     <div>

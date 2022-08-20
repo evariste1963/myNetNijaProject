@@ -1,0 +1,40 @@
+<script>
+let showModal = true;
+let isPromo =  false
+
+</script>
+
+{#if showModal}
+<div class = 'backdrop' class:promo={isPromo}>
+    <div class="modal">
+        <p>sign up for offers!</p>
+    </div>
+</div>
+{/if}
+
+<style>
+
+.backdrop {
+width: 100%;
+height: 100%;
+padding: 0;
+position: fixed;
+background: rgba(0,0,0,0.8);
+}
+
+.modal {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 10% auto;
+    text-align: center;
+    background: #fff;
+}
+
+.promo .modal{
+    background: crimson;
+    color: white;
+    font-weight: 900;
+}
+
+</style>

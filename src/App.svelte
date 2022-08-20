@@ -1,4 +1,6 @@
 <script>
+  import Modal from './modal.svelte';
+
     let firstName, middleName, lastName, age, beltColour;
 
   // reactive values % statements
@@ -49,6 +51,8 @@
  
 </script>
 
+<Modal />
+
 <main>
   <!-- link to project lessons :- https://www.youtube.com/watch?v=QJJjXRIg7kI&list=PL4cUxeGkcC9hlbrVO_2QFVqVPhlZmz7tO&index=5 -->
 
@@ -68,9 +72,10 @@
   <!-- <input type="text" on:input={handleInput} value = {beltColour}> -->
   <!-- short method of 2 way binding-->
   <input type="text" placeholder='enter belt colour' bind:value={beltColour} />
+  <div>
   <button on:click={handleAddPerson}>add person</button>
   <button on:click={handleClearInputs}>clear input</button>
-
+</div>
   {#each people as person (person.id)}
     <div>
       <h4 on:click={() => handleDelete(person.id)}>{person.name}</h4>

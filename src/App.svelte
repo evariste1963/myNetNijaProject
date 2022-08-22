@@ -114,9 +114,7 @@ const toggleModal= ()=> {
     cursor: pointer;
   }
 
-  button {
-    cursor:pointer
-  }
+  
 
   @media (min-width: 640px) {
     main {

@@ -1,7 +1,9 @@
 <script>
   import Modal from './modal.svelte';
 
-    let firstName, middleName, lastName, age, beltColour;
+  let showModal = false;
+
+  let firstName, middleName, lastName, age, beltColour;
 
   // reactive values % statements
  
@@ -11,6 +13,10 @@
     //console.log(beltColour);
     //console.log(people);
   }
+  
+const toggleModal= ()=> {
+  showModal = !showModal
+}
 
   const handleClick = () => {
     beltColour = "orange";
@@ -51,11 +57,11 @@
  
 </script>
 
-<Modal />
+<Modal message= "hey, I'm a prop!" {showModal} on:click={toggleModal}/>
 
 <main>
   <!-- link to project lessons :- https://www.youtube.com/watch?v=QJJjXRIg7kI&list=PL4cUxeGkcC9hlbrVO_2QFVqVPhlZmz7tO&index=5 -->
-
+<button on:click|once={toggleModal}>open modal</button>
   <h1 style="color:{beltColour}">Hello {#if !middleName && firstName && lastName}{firstName} {lastName}!{:else if firstName && middleName && lastName} {fullName}! {:else} what's your name?{/if}</h1>
   <!-- dynamic inline style -->
   <!-- <p style="color:{beltColour}">{beltColour} belt</p> -->
@@ -80,7 +86,7 @@
     <div>
       <h4 on:click={() => handleDelete(person.id)}>{person.name}</h4>
       {#if person.beltColour === 'black'}
-      <p style='color: red'><strong> MASTER NINJA!</strong></p>
+      <p style='color: blue'><strong> MASTER NINJA!</strong></p>
       {/if}
       <p>{person.age} years old, {person.beltColour} belt</p>
       ----------------------------
@@ -106,6 +112,10 @@
 
   h4 {
     cursor: pointer;
+  }
+
+  button {
+    cursor:pointer
   }
 
   @media (min-width: 640px) {

@@ -1,22 +1,22 @@
 <script>
-  import Modal from './modal.svelte';
+  import Modal from "./modal.svelte";
 
   let showModal = false;
 
   let firstName, middleName, lastName, age, beltColour;
 
   // reactive values % statements
- 
+
   $: fullName = `${firstName} ${middleName} ${lastName}`;
   //$: console.log(beltColour);
   $: {
     //console.log(beltColour);
     //console.log(people);
   }
-  
-const toggleModal= ()=> {
-  showModal = !showModal
-}
+
+  const toggleModal = () => {
+    showModal = !showModal;
+  };
 
   const handleClick = () => {
     beltColour = "orange";
@@ -38,55 +38,93 @@ const toggleModal= ()=> {
   };
 
   const handleAddPerson = () => {
-    if (firstName && age && beltColour){
-   
-    people = [
-      ...people,
-      { name: firstName, beltColour, age: age, id: people[people.length -1].id +1 },
-    ];
-  }
+    if (firstName && age && beltColour) {
+      people = [
+        ...people,
+        {
+          name: firstName,
+          beltColour,
+          age: age,
+          id: people[people.length - 1].id + 1,
+        },
+      ];
+    }
+    if (showModal) {
+      toggleModal();
+    }
   };
-  
+
   const handleClearInputs = () => {
     firstName = null;
     middleName = null;
-    lastName=null;
-    age=null;
-    beltColour=null
-  }
- 
+    lastName = null;
+    age = null;
+    beltColour = null;
+  };
 </script>
 
-<Modal message= "hey, I'm a prop!" {showModal} on:click={toggleModal}/>
-
+<!-- <Modal message= "hey, I'm a prop!" {showModal} on:click={toggleModal}/> -->
+<!-- passing slots -->
+<Modal {showModal} on:click={toggleModal}>
+  <h3>Add a new Person</h3>
+  <form>
+    <input type="text" placeholder="enter first name" bind:value={firstName} />
+    <input
+      type="text"
+      placeholder="enter middle name"
+      bind:value={middleName}
+    />
+    <input type="text" placeholder="enter last name" bind:value={lastName} />
+    <input type="text" placeholder="enter age" bind:value={age} />
+    <input
+      type="text"
+      placeholder="enter belt colour"
+      bind:value={beltColour}
+    />
+    <div>
+      <button on:click|preventDefault={handleAddPerson}>add person</button>
+      <button on:click|preventDefault={handleClearInputs}>clear input</button>
+    </div>
+    <!-- 1B. 2 way binding --- 2 ways -->
+    <!-- <input type="text" on:input={handleInput} value = {beltColour}> -->
+    <!-- short method of 2 way binding-->
+  </form>
+</Modal>
 <main>
   <!-- link to project lessons :- https://www.youtube.com/watch?v=QJJjXRIg7kI&list=PL4cUxeGkcC9hlbrVO_2QFVqVPhlZmz7tO&index=5 -->
-<button on:click|once={toggleModal}>open modal</button>
-  <h1 style="color:{beltColour}">Hello {#if !middleName && firstName && lastName}{firstName} {lastName}!{:else if firstName && middleName && lastName} {fullName}! {:else} what's your name?{/if}</h1>
+  <!-- <button on:click|once={toggleModal}>open modal</button> -->
+  <button on:click={toggleModal}>open modal</button>
+  <h1 style="color:{beltColour}"
+    >Hello {#if !middleName && firstName && lastName}{firstName}
+      {lastName}!{:else if firstName && middleName && lastName}
+      {fullName}!
+    {:else}
+      what's your name?{/if}</h1
+  >
   <!-- dynamic inline style -->
   <!-- <p style="color:{beltColour}">{beltColour} belt</p> -->
   {#if beltColour && firstName && lastName}
-  <p style="color:{beltColour}">{fullName} - {beltColour} belt</p>
+    <p style="color:{beltColour}">{fullName} - {beltColour} belt</p>
   {/if}
-  
+
   <!-- <button on:click={handleClick}>update belt colour</button> -->
-  <input type="text" placeholder='enter first name' bind:value={firstName} />
-  <input type="text" placeholder='enter middle name' bind:value={middleName} />
-  <input type="text" placeholder='enter last name' bind:value={lastName} />
-  <input type="text" placeholder='enter age' bind:value={age}>
+  <input type="text" placeholder="enter first name" bind:value={firstName} />
+  <input type="text" placeholder="enter middle name" bind:value={middleName} />
+  <input type="text" placeholder="enter last name" bind:value={lastName} />
+  <input type="text" placeholder="enter age" bind:value={age} />
   <!-- 1B. 2 way binding --- 2 ways -->
   <!-- <input type="text" on:input={handleInput} value = {beltColour}> -->
   <!-- short method of 2 way binding-->
-  <input type="text" placeholder='enter belt colour' bind:value={beltColour} />
+  <!-- <input type="text" placeholder="enter belt colour" bind:value={beltColour} /> -->
   <div>
-  <button on:click={handleAddPerson}>add person</button>
-  <button on:click={handleClearInputs}>clear input</button>
-</div>
+    <!--  <button on:click={handleAddPerson}>add person</button> -->
+    <button on:click={handleClearInputs}>clear input</button>
+  </div>
   {#each people as person (person.id)}
     <div>
       <h4 on:click={() => handleDelete(person.id)}>{person.name}</h4>
-      {#if person.beltColour === 'black'}
-      <p style='color: blue'><strong> MASTER NINJA!</strong></p>
+      {#if person.beltColour === "black"}
+        <p style="color: blue"><strong> MASTER NINJA!</strong></p>
       {/if}
       <p>{person.age} years old, {person.beltColour} belt</p>
       ----------------------------
@@ -113,8 +151,6 @@ const toggleModal= ()=> {
   h4 {
     cursor: pointer;
   }
-
-  
 
   @media (min-width: 640px) {
     main {

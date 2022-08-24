@@ -34,8 +34,11 @@
   <label for="">Belt Colour: </label>
   <select class="btn" name="" id="" bind:value={beltColour}>
     <option value="black">black</option>
+    <option value="brown">brown</option>
     <option value="orange">orange</option>
+    <option value="yellow">yellow</option>
     <option value="green">green</option>
+    <option value="white">white</option>
   </select><br />
   <button class="btn">Add Ninja</button>
 </form>

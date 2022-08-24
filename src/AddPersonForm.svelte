@@ -18,6 +18,9 @@
   };
 </script>
 
+<div>
+  <h3>Add new Ninja</h3>
+</div>
 <form on:submit|preventDefault={handleSubmit}>
   <input type="text" placeholder="name" bind:value={name} />
   <input type="number" placeholder="age" bind:value={age} min="0" max="99" />

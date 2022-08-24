@@ -21,7 +21,6 @@
   };
 
   const addPerson = e => {
-    console.log(e.detail);
     const person = e.detail;
     people = [person, ...people];
     showModal = false;
@@ -29,7 +28,6 @@
 </script>
 
 <Modal {showModal} on:click={toggleModal}>
-  <!-- <h3>Add a New Ninja</h3> -->
   <AddPersonForm on:addPerson={addPerson} />
 </Modal>
 <main>
@@ -48,7 +46,7 @@
         <div style="display:inline-flex; align-items:center">
           <label for="">skills:</label>
           {#each person.skills as skill}
-            <p style="margin:10px">{skill}</p>
+            <p style="margin-left:10px">{skill}</p>
           {/each}
         </div><br />
       {:else}

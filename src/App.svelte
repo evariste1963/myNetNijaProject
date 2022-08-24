@@ -35,17 +35,24 @@
 <main>
   <button on:click={toggleModal}>Open Modal</button>
   {#each people as person (person.id)}
-    <div>
+    <div
+      style="border-bottom: 1px solid #333; width:50%; margin-left:auto; margin-right:auto"
+    >
       <h4>{person.name}</h4>
       {#if person.beltColour === "black"}
         <p><strong>MASTER NINJA</strong></p>
       {/if}
       <p>{person.age} years old, {person.beltColour} belt.</p>
+
       {#if person.skills}
-        <label for="">skills: </label>
-        {#each person.skills as skill}
-          <p>{skill}</p>
-        {/each}
+        <div style="display:inline-flex; align-items:center">
+          <label for="">skills:</label>
+          {#each person.skills as skill}
+            <p style="margin:10px">{skill}</p>
+          {/each}
+        </div><br />
+      {:else}
+        <p>There are no skills to display...</p>
       {/if}
       <button on:click={e => handleClick(e, person.id)}>delete</button>
     </div>

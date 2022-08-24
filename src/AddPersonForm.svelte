@@ -19,7 +19,8 @@
 </script>
 
 <form on:submit|preventDefault={handleSubmit}>
-  <input type="text" placeholder="name" bind:value={name} />
+  <!-- svelte-ignore a11y-autofocus -->
+  <input type="text" placeholder="name" bind:value={name} autofocus/>
   <input type="number" placeholder="age" bind:value={age} min="0" max="99" />
   <div class="skills">
     <label for="">skills:</label>

@@ -9,27 +9,27 @@
       <slot name="title">
         <h3>Default Title</h3>
       </slot>
-      <slot></slot>
+      <slot />
     </div>
   </div>
 {/if}
 
 <style>
-  .backdrop{
+  .backdrop {
     width: 100%;
     height: 100%;
     position: fixed;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.8);
   }
-  .modal{
+  .modal {
     padding: 10px;
     border-radius: 10px;
     max-width: 400px;
-    margin: 10% auto;;
+    margin: 10% auto;
     text-align: center;
     background: white;
   }
-  .promo .modal{
+  .promo .modal {
     background: crimson;
     color: white;
   }

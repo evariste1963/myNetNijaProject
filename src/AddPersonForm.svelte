@@ -20,7 +20,7 @@
 
 <form on:submit|preventDefault={handleSubmit}>
   <input type="text" placeholder="name" bind:value={name} />
-  <input type="number" placeholder="age" bind:value={age} />
+  <input type="number" placeholder="age" bind:value={age} min="0" max="99" />
   <label for="">skills:</label>
   <input type="checkbox" bind:group={skills} value="fighting" /> fighting<br />
   <input type="checkbox" bind:group={skills} value="sneaking" /> sneaking<br />

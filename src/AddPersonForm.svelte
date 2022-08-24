@@ -18,24 +18,42 @@
   };
 </script>
 
-<div>
-  <h3>Add new Ninja</h3>
-</div>
 <form on:submit|preventDefault={handleSubmit}>
   <input type="text" placeholder="name" bind:value={name} />
   <input type="number" placeholder="age" bind:value={age} min="0" max="99" />
-  <label for="">skills:</label>
-  <input type="checkbox" bind:group={skills} value="fighting" /> fighting<br />
-  <input type="checkbox" bind:group={skills} value="sneaking" /> sneaking<br />
-  <input type="checkbox" bind:group={skills} value="running" /> running<br />
+  <div class="skills">
+    <label for="">skills:</label>
+
+    <input class="skill" type="checkbox" bind:group={skills} value="fighting" />
+    fighting
+    <input class="skill" type="checkbox" bind:group={skills} value="sneaking" />
+    sneaking
+    <input class="skill" type="checkbox" bind:group={skills} value="running" />
+    running
+  </div>
   <label for="">Belt Colour: </label>
-  <select name="" id="" bind:value={beltColour}>
+  <select class="btn" name="" id="" bind:value={beltColour}>
     <option value="black">black</option>
     <option value="orange">orange</option>
     <option value="green">green</option>
-  </select>
-  <button>Add Ninja</button>
+  </select><br />
+  <button class="btn">Add Ninja</button>
 </form>
 
 <style>
+  .skills {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .skill {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 4px 10px 20px;
+  }
+
+  .btn {
+    width: 50%;
+    text-align: center;
+  }
 </style>

@@ -29,6 +29,9 @@
 </script>
 
 <Modal {showModal} on:click={toggleModal}>
+  <div>
+    <h3>Add new Ninja</h3>
+  </div>
   <AddPersonForm on:addPerson={addPerson} />
 </Modal>
 <main>

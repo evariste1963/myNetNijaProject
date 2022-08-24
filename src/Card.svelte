@@ -10,6 +10,6 @@
     padding: 40px 50px;
     margin: 10px auto;
     position: relative;
-    width: 50%;
+    width: 35%;
   }
 </style>
